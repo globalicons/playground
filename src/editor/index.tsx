@@ -1,7 +1,5 @@
 import { Puck } from "@measured/puck";
 import "@measured/puck/puck.css";
-import "../style.css"
-import "katex/dist/katex.min.css"
 
 import components from "../components"
 
