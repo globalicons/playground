@@ -41,8 +41,9 @@ export default {
     }),
     typescript({
       tsconfig: './tsconfig.json',
-      sourceMap: true,
-    }),
+      declaration: true,
+      declarationDir: 'dist',
+   }),
     commonjs(),
     json(),
     babel({
