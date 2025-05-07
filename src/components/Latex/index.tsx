@@ -1,5 +1,4 @@
 import React from "react";
-import { ComponentProps } from "../../types";
 import MarkdownIt from "markdown-it";
 import mkKatex from "markdown-it-katex";
 import "katex/dist/katex.min.css";

@@ -1,6 +1,4 @@
 import React from "react";
-import { ComponentProps } from "../../types";
-
 const name = "Text"
 
 const config = {
