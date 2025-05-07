@@ -5,9 +5,9 @@ A powerful library for building drag and drop website experiences.
 ## Installation
 
 ```bash
-npm install builderkit
+npm install playground
 # or
-yarn add builderkit
+yarn add playground
 ```
 
 ## Features
@@ -21,7 +21,7 @@ yarn add builderkit
 ## Usage
 
 ```jsx
-import { DragContainer } from 'builderkit';
+import { Editor } from 'playground';
 
 function MyEditor() {
   const handleDrop = (event) => {
