@@ -21,8 +21,8 @@
     "ui-components"
   ],
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "19 || 18",
+    "react-dom": "19 || 18"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
