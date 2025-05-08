@@ -48,6 +48,7 @@
     "markdown-it-katex": "^2.0.3",
     "react-latex": "^2.0.0",
     "reactjs-tiptap-editor": "^0.3.2",
-    "tiptap-math": "^1.0.0"
+    "tiptap-math": "^1.0.0",
+    "uuid": "^11.1.0"
   }
 }
