@@ -1,2 +1,3 @@
-export * from './editor';
-export * from './renderer'
+export { Editor } from './editor'
+export { EmptyEditor } from './editor'
+export { Renderer } from './renderer'
