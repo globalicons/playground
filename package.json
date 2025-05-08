@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Builder kit for building WYSIWYG content on the EazyEd platform",
   "type": "module",
-	"main": "dist/index.js",
-	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -21,8 +21,8 @@
     "ui-components"
   ],
   "peerDependencies": {
-    "react": "^18 || ^19",
-    "react-dom": "^18 || ^19"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
@@ -46,8 +46,6 @@
     "katex": "^0.16.22",
     "markdown-it": "^14.1.0",
     "markdown-it-katex": "^2.0.3",
-    "react": "^19.0.0",
-		"react-dom": "^19.0.0",
     "react-latex": "^2.0.0"
   }
 }
