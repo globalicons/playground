@@ -46,6 +46,8 @@
     "katex": "^0.16.22",
     "markdown-it": "^14.1.0",
     "markdown-it-katex": "^2.0.3",
-    "react-latex": "^2.0.0"
+    "react-latex": "^2.0.0",
+    "reactjs-tiptap-editor": "^0.3.2",
+    "tiptap-math": "^1.0.0"
   }
 }
