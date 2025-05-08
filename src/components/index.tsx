@@ -1,4 +1,4 @@
-import compileComponent from "../utils/compile-component"
+import { compileComponent } from "../utils"
 
 import RawText from "./Text"
 import RawLatex from "./Latex"
@@ -11,6 +11,14 @@ export const Latex = compileComponent(RawLatex)
 export const Image = compileComponent(RawImage)
 export const RichText = compileComponent(RawRichText)
 export const Html = compileComponent(RawHtml)
+
+export const rawComponents = {
+  Text: RawText,
+  Latex: RawLatex,
+  Image: RawImage,
+  RichText: RawRichText,
+  Html: RawHtml
+}
 
 
 export default {

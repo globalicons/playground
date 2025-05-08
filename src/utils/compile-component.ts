@@ -1,6 +1,11 @@
-import { ComponentProps } from "../types";
+interface ComponentProps {
+  name: string;
+  config: any;
+  render: (props?: any) => React.ReactElement;
+}
 
-export default function compileComponent({ name, config, render }: ComponentProps) {
+
+export const compileComponent = ({ name, config, render }: ComponentProps) => {
   return {
     [name]: {
       fields: config,
