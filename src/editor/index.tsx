@@ -29,7 +29,7 @@ const onPublish = (data: any) => {
  
 // Render Puck editor
 export const Editor = (props: EditorProps) => {
-  return <Puck config={config} data={props.data || initObject} onPublish={onPublish} />;
+  return <Puck config={config} data={props.data || initObject} onPublish={props.onPublish || onPublish} />;
 }
 
 export const EmptyEditor = (props: EmptyEditorProps) => {
