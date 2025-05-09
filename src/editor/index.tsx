@@ -3,7 +3,7 @@ import React from "react";
 import { Puck } from "@measured/puck";
 import "@measured/puck/puck.css";
 
-import components from "../components"
+import components from "../components";
 import { migrate } from "../utils/migrate";
 
 type EditorProps = {
@@ -14,24 +14,24 @@ type EditorProps = {
 interface EmptyEditorProps extends EditorProps {
   config: any;
 }
- 
+
 // Create Puck component config
 const config: any = { components };
 
 const initObject = {
   content: [],
-  root: {props: {}},
+  root: { props: {} },
   zones: {}
-}
+};
 
 const viewports = [
   {
-    "width": 390,
-    "height": 844,
-    "icon": "Smartphone",
-    "label": "Small"
+    width: 390,
+    height: 844,
+    icon: "Smartphone",
+    label: "Small"
   }
-]
+];
 
 // Helper function to detect if a string contains HTML
 const isHtmlString = (str: string): boolean => {
@@ -50,52 +50,44 @@ const isPuckObject = (data: any): boolean => {
   );
 };
 
-const onPublish = (data: any) => {
-  console.log("onPublish", JSON.stringify(data))
-}
- 
+const defaultOnPublish = (data: any) => {
+  console.log("onPublish", JSON.stringify(data));
+};
+
 // Render Puck editor
 export const Editor = (props: EditorProps) => {
-  const { data } = props;
+  const { data, onPublish = defaultOnPublish } = props;
   
-  // If no data is provided, use the initial object
-  if (!data) {
-    return <Puck       viewports={viewports}
-    config={config} data={initObject} onPublish={props.onPublish || onPublish} />;
-  }
+  let editorData = initObject;
   
-  // Case 1: If data is already a Puck object, use it directly
-  if (isPuckObject(data)) {
-    return <Puck       viewports={viewports}
-     config={config} data={data} onPublish={props.onPublish || onPublish} />;
-  }
-  
-  // Case 2 & 3: If data is a string, determine if it's HTML or plain text
-  if (typeof data === 'string') {
-    let migratedData;
-    if (isHtmlString(data)) {
-      // It's an HTML string, use the HTML migration
-      migratedData = migrate(data, 'Html');
-    } else {
-      // It's a plain text string, use the Text migration
-      migratedData = migrate(data, 'Text');
+  // Determine the type of data and process accordingly
+  if (data) {
+    if (isPuckObject(data)) {
+      // Case 1: If data is already a Puck object, use it directly
+      editorData = data;
+    } else if (typeof data === 'string') {
+      // Case 2 & 3: If data is a string, determine if it's HTML or plain text
+      editorData = isHtmlString(data) 
+        ? migrate(data, 'Html') 
+        : migrate(data, 'Text');
     }
-    return <Puck       viewports={viewports}
-    config={config} data={migratedData} onPublish={props.onPublish || onPublish} />;
+    // For any other data type, we'll use the default initObject
   }
   
-  // Fallback: If data is in an unexpected format, use the initial object
-  return <Puck 
+  return (
+    <Puck
       config={config}
-      data={initObject}
-      onPublish={props.onPublish || onPublish}
+      data={editorData}
+      onPublish={onPublish}
       viewports={viewports}
-    />;
-}
+    />
+  );
+};
 
 export const EmptyEditor = (props: EmptyEditorProps) => {
-  return <Puck data={props.data || initObject} config={props.config} />
-}
+  const { data = initObject, config: customConfig } = props;
+  return <Puck data={data} config={customConfig} />;
+};
 
 
 
