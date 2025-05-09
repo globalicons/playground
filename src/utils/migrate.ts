@@ -18,7 +18,7 @@ const migrateText = (str: string) : any => {
       text: str,
     }
   }
-  let component = { content, root: initObject.root, zones: initObject.zones }
+  let component = { content: [content], root: initObject.root, zones: initObject.zones }
   return component
 }
 
@@ -30,7 +30,7 @@ const migrateHtml = (str: string) : any => {
       content: str,
     }
   }
-  let component = { content, root: initObject.root, zones: initObject.zones }
+  let component = { content: [content], root: initObject.root, zones: initObject.zones }
   return component
 }
 
