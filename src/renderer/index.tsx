@@ -3,6 +3,7 @@ import React from "react";
 import { Render } from "@measured/puck"
 import components from "../components"
 import { migrate } from "../utils/migrate";
+import type { RendererProps } from "../types";
 
 const initObject = {
   content: [],
@@ -32,12 +33,12 @@ export const Renderer = (props: RendererProps) => {
   
   // If no data is provided, use the initial object
   if (!data) {
-    return <Render data={initObject} config={{ components }} />;
+    return <Render data={initObject as any} config={{ components } as any} />;
   }
   
   // Case 1: If data is already a Puck object, use it directly
   if (isPuckObject(data)) {
-    return <Render data={data} config={{ components }} />;
+    return <Render data={data as any} config={{ components } as any} />;
   }
   
   // Case 2 & 3: If data is a string, determine if it's HTML or plain text
@@ -45,15 +46,13 @@ export const Renderer = (props: RendererProps) => {
     if (isHtmlString(data)) {
       // It's an HTML string, use the HTML migration
       const migratedData = migrate(data, 'Html');
-      console.log("migratedData", migratedData)
-      return <Render data={migratedData} config={{ components }} />;
+      return <Render data={migratedData as any} config={{ components } as any} />;
     } else {
-      // It's a plain text string, use the Text migration
       const migratedData = migrate(data, 'Text');
-      return <Render data={migratedData} config={{ components }} />;
+      return <Render data={migratedData as any} config={{ components } as any} />;
     }
   }
   
   // Fallback: If data is in an unexpected format, use the initial object
-  return <Render data={initObject} config={{ components }} />;
+  return <Render data={initObject as any} config={{ components } as any} />;
 }
