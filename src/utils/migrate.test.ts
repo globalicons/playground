@@ -83,9 +83,9 @@ describe('migrate', () => {
       const puckResult = result as PuckData;
       expect(puckResult.content).toHaveLength(1);
       expect(puckResult.content[0]).toEqual({
-        type: 'HTML',
+        type: 'Html',
         props: {
-          id: 'HTML-mock-uuid-1234',
+          id: 'Html-mock-uuid-1234',
           content: htmlContent
         }
       });
@@ -297,7 +297,7 @@ describe('migrate', () => {
       // Assert
       expect(result1.content[0].props.id).toBe('Text-uuid-1');
       expect(result2.content[0].props.id).toBe('Text-uuid-2');
-      expect(result3.content[0].props.id).toBe('HTML-uuid-3');
+      expect(result3.content[0].props.id).toBe('Html-uuid-3');
       
       // Cleanup
       uuidMock.v4.mockReturnValue('mock-uuid-1234');
@@ -347,7 +347,7 @@ describe('isPuckData', () => {
       const complexPuckData: PuckData = {
         content: [
           { type: 'Text', props: { id: 'text-1', text: 'Hello' } },
-          { type: 'HTML', props: { id: 'html-1', content: '<p>World</p>' } }
+          { type: 'Html', props: { id: 'html-1', content: '<p>World</p>' } }
         ],
         root: { 
           props: { 
