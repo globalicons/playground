@@ -37,7 +37,7 @@ jest.mock('../utils/migrate', () => ({
     if (type === 'Html') {
       return {
         content: [{
-          type: 'HTML',
+          type: 'Html',
           props: { id: 'html-mock-id', content }
         }],
         root: { props: {} },
@@ -156,7 +156,7 @@ describe('Editor', () => {
       // Assert
       const puckData = JSON.parse(screen.getByTestId('puck-data').textContent || '{}');
       expect(puckData.content[0]).toEqual({
-        type: 'HTML',
+        type: 'Html',
         props: { id: 'html-mock-id', content: htmlContent }
       });
     });
@@ -223,7 +223,7 @@ describe('Editor', () => {
 
       // Assert
       const puckData = JSON.parse(screen.getByTestId('puck-data').textContent || '{}');
-      expect(puckData.content[0].type).toBe('HTML');
+      expect(puckData.content[0].type).toBe('Html');
     });
 
     it('should not detect false positives as HTML', () => {
@@ -255,7 +255,7 @@ describe('Editor', () => {
 
       // Assert
       const puckData = JSON.parse(screen.getByTestId('puck-data').textContent || '{}');
-      expect(puckData.content[0].type).toBe('HTML');
+      expect(puckData.content[0].type).toBe('Html');
     });
   });
 

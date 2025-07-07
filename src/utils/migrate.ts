@@ -78,9 +78,9 @@ const migrateText: MigrationFunction = (content: string): PuckData => {
  */
 const migrateHtml: MigrationFunction = (content: string): PuckData => {
   const htmlContent: PuckContentItem = {
-    type: 'HTML',
+    type: 'Html',
     props: {
-      id: generateComponentId('HTML'),
+      id: generateComponentId('Html'),
       content,
     }
   };
