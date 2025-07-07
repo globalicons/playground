@@ -24,19 +24,19 @@ const INIT_PUCK_DATA: PuckData = {
 /**
  * Default viewport configuration for responsive design preview
  */
-const DEFAULT_VIEWPORTS: ReadonlyArray<Viewport> = [
+const DEFAULT_VIEWPORTS: Viewport[] = [
   {
     width: 390,
     height: 844,
     icon: "Smartphone",
     label: "Small"
   }
-] as const;
+];
 
 /**
  * Puck component configuration
  */
-const PUCK_CONFIG = { components } as const;
+const PUCK_CONFIG = { components };
 
 /**
  * Checks if a string contains HTML markup.
@@ -162,10 +162,10 @@ export const Editor: React.FC<EditorProps> = (props: EditorProps) => {
   
   return (
     <Puck
-      config={PUCK_CONFIG}
-      data={editorData}
-      onPublish={onPublish}
-      viewports={DEFAULT_VIEWPORTS}
+      config={PUCK_CONFIG as any}
+      data={editorData as any}
+      onPublish={onPublish as any}
+      viewports={DEFAULT_VIEWPORTS as any}
     />
   );
 };
@@ -204,9 +204,9 @@ export const EmptyEditor: React.FC<EmptyEditorProps> = (props: EmptyEditorProps)
   const { data = INIT_PUCK_DATA, config, onPublish } = props;
   return (
     <Puck 
-      data={data} 
-      config={config} 
-      onPublish={onPublish}
+      data={data as any} 
+      config={{ components: config } as any} 
+      onPublish={onPublish as any}
     />
   );
 };

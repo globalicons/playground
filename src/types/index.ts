@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Configuration option for component fields
  */
@@ -10,9 +12,10 @@ export interface FieldOption {
  * Field configuration for component properties
  */
 export interface FieldConfig {
-  readonly type: 'text' | 'radio' | 'select' | 'number';
+  readonly type: 'text' | 'radio' | 'select' | 'number' | 'custom';
   readonly options?: ReadonlyArray<FieldOption>;
   readonly defaultValue?: string | number;
+  readonly render?: (props: any) => any;
 }
 
 /**
@@ -28,7 +31,7 @@ export interface ComponentConfig {
 export interface ComponentProps {
   readonly name: string;
   readonly config: ComponentConfig;
-  readonly render: (props: Record<string, unknown>) => unknown;
+  readonly render: (props: Record<string, unknown>) => any;
 }
 
 /**
@@ -37,7 +40,7 @@ export interface ComponentProps {
 export interface CompiledComponent {
   readonly [componentName: string]: {
     readonly fields: ComponentConfig;
-    readonly render: (props: Record<string, unknown>) => unknown;
+    readonly render: (props: Record<string, unknown>) => any;
   };
 }
 
@@ -63,16 +66,16 @@ export interface PuckRoot {
  * Zones configuration for Puck data
  */
 export interface PuckZones {
-  readonly [zoneName: string]: ReadonlyArray<string>;
+  readonly [zoneName: string]: string[];
 }
 
 /**
  * Complete Puck data structure
  */
 export interface PuckData {
-  readonly content: ReadonlyArray<PuckContentItem>;
-  readonly root: PuckRoot;
-  readonly zones: PuckZones;
+  content: PuckContentItem[];
+  root: PuckRoot;
+  zones: PuckZones;
 }
 
 /**

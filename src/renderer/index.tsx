@@ -45,10 +45,8 @@ export const Renderer = (props: RendererProps) => {
     if (isHtmlString(data)) {
       // It's an HTML string, use the HTML migration
       const migratedData = migrate(data, 'Html');
-      console.log("migratedData", migratedData)
       return <Render data={migratedData} config={{ components }} />;
     } else {
-      // It's a plain text string, use the Text migration
       const migratedData = migrate(data, 'Text');
       return <Render data={migratedData} config={{ components }} />;
     }

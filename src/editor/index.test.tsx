@@ -62,8 +62,8 @@ jest.mock('../utils/migrate', () => ({
 jest.mock('../components', () => ({
   __esModule: true,
   default: {
-    Text: { fields: { text: { type: 'text' } }, render: () => null },
-    Html: { fields: { content: { type: 'text' } }, render: () => null }
+    Text: { fields: { text: { type: 'text' } }, render: () => React.createElement('div') },
+    Html: { fields: { content: { type: 'text' } }, render: () => React.createElement('div') }
   }
 }));
 
@@ -381,7 +381,7 @@ describe('EmptyEditor', () => {
   const mockCustomConfig: CompiledComponent = {
     CustomComponent: {
       fields: { text: { type: 'text' } },
-      render: () => null
+      render: () => React.createElement('div')
     }
   };
 
@@ -402,7 +402,8 @@ describe('EmptyEditor', () => {
       // Assert
       expect(screen.getByTestId('mock-puck')).toBeInTheDocument();
       const puckConfig = JSON.parse(screen.getByTestId('puck-config').textContent || '{}');
-      expect(puckConfig).toEqual(mockCustomConfig);
+      // Only check the fields part since render functions don't serialize
+      expect(puckConfig.components.CustomComponent.fields).toEqual(mockCustomConfig.CustomComponent.fields);
     });
 
     it('should use default empty data when no data provided', () => {
@@ -479,7 +480,7 @@ describe('EmptyEditor', () => {
 
       // Assert
       const puckViewports = screen.getByTestId('puck-viewports').textContent;
-      expect(puckViewports).toBe('undefined'); // No viewports passed
+      expect(puckViewports).toBe(''); // No viewports passed
     });
   });
 
@@ -496,7 +497,7 @@ describe('EmptyEditor', () => {
 
       // Assert
       const puckConfig = JSON.parse(screen.getByTestId('puck-config').textContent || '{}');
-      expect(puckConfig).toEqual({});
+      expect(puckConfig).toEqual({ components: {} });
     });
 
          it('should handle complex configuration with multiple components', () => {
@@ -507,14 +508,14 @@ describe('EmptyEditor', () => {
              text: { type: 'text' }, 
              fontSize: { type: 'number' } 
            },
-           render: () => null
+           render: () => React.createElement('div')
          },
          Image: {
            fields: { 
              src: { type: 'text' }, 
              alt: { type: 'text' } 
            },
-           render: () => null
+           render: () => React.createElement('div')
          },
          Button: {
            fields: { 
@@ -527,7 +528,7 @@ describe('EmptyEditor', () => {
                ]
              }
            },
-           render: () => null
+           render: () => React.createElement('div')
          }
        };
 
@@ -540,9 +541,12 @@ describe('EmptyEditor', () => {
 
       // Assert
       const puckConfig = JSON.parse(screen.getByTestId('puck-config').textContent || '{}');
-      expect(puckConfig).toEqual(complexConfig);
-      expect(Object.keys(puckConfig)).toHaveLength(3);
-      expect(puckConfig.Button.fields.variant.options).toHaveLength(2);
+      // Only check the fields part since render functions don't serialize
+      expect(Object.keys(puckConfig.components)).toHaveLength(3);
+      expect(puckConfig.components.Button.fields.variant.options).toHaveLength(2);
+      expect(puckConfig.components.Text.fields).toEqual(complexConfig.Text.fields);
+      expect(puckConfig.components.Image.fields).toEqual(complexConfig.Image.fields);
+      expect(puckConfig.components.Button.fields).toEqual(complexConfig.Button.fields);
     });
   });
 

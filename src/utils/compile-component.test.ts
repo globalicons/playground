@@ -1,3 +1,4 @@
+import React from 'react';
 import { compileComponent } from './compile-component';
 import type { ComponentProps, FieldConfig } from '../types';
 
@@ -5,7 +6,7 @@ describe('compileComponent', () => {
   describe('Basic functionality', () => {
     it('should compile a simple text component correctly', () => {
       // Arrange
-      const mockRender = jest.fn(() => 'MockElement' as unknown);
+      const mockRender = jest.fn(() => React.createElement('div', {}, 'MockElement'));
       const textConfig: Record<string, FieldConfig> = {
         text: { type: 'text' },
         fontSize: { type: 'number' }
@@ -14,7 +15,7 @@ describe('compileComponent', () => {
       const componentProps: ComponentProps = {
         name: 'Text',
         config: textConfig,
-        render: mockRender
+        render: mockRender as any
       };
 
       // Act
@@ -42,7 +43,7 @@ describe('compileComponent', () => {
       const componentProps: ComponentProps = {
         name: 'StyledText',
         config: radioConfig,
-        render: mockRender
+        render: mockRender as any
       };
 
       // Act
