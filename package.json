@@ -1,63 +1,63 @@
 {
-  "name": "playground",
-  "version": "1.0.0",
-  "description": "Builder kit for building WYSIWYG content on the EazyEd platform",
-  "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "prepublishOnly": "yarn run build",
-    "postinstall": "npm run build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
-  },
-  "author": "Raaj Ahiable <raaj@eazyed.org>",
-  "license": "ISC",
-  "keywords": [
-    "drag-and-drop",
-    "website-builder",
-    "ui-components"
-  ],
-  "peerDependencies": {
-    "react": "19 || 18",
-    "react-dom": "19 || 18"
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^4.0.1",
-    "@jest/globals": "^30.0.4",
-    "@storybook/addon-onboarding": "^9.0.15",
-    "@storybook/react-vite": "^9.0.15",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@types/jest": "^30.0.0",
-    "@vitest/browser": "^3.0.8",
-    "@vitest/coverage-v8": "^3.0.8",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^30.0.4",
-    "jest-environment-jsdom": "^30.0.4",
-    "playwright": "^1.51.0",
-    "storybook": "^9.0.15",
-    "ts-jest": "^29.4.0",
-    "tsup": "^8.4.0",
-    "vitest": "^3.0.8",
-    "eslint-plugin-storybook": "9.0.15",
-    "@storybook/addon-vitest": "9.0.15",
-    "@storybook/addon-docs": "^9.0.15"
-  },
-  "dependencies": {
-    "@measured/puck": "^0.18.3",
-    "@types/katex": "^0.16.7",
-    "katex": "^0.16.22",
-    "markdown-it": "^14.1.0",
-    "markdown-it-katex": "^2.0.3",
-    "react-latex": "^2.0.0",
-    "reactjs-tiptap-editor": "^0.3.2",
-    "tiptap-math": "^1.0.0",
-    "uuid": "^11.1.0"
-  }
+	"name": "playground",
+	"version": "1.1.0",
+	"description": "Builder kit for building WYSIWYG content on the EazyEd platform",
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
+		"build": "tsup src/index.ts --format cjs,esm --dts",
+		"prepublishOnly": "yarn run build",
+		"postinstall": "npm run build",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"test:coverage": "jest --coverage"
+	},
+	"author": "Raaj Ahiable <raaj@eazyed.org>",
+	"license": "ISC",
+	"keywords": [
+		"drag-and-drop",
+		"website-builder",
+		"ui-components"
+	],
+	"peerDependencies": {
+		"react": "19 || 18",
+		"react-dom": "19 || 18"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^4.0.1",
+		"@jest/globals": "^30.0.4",
+		"@storybook/addon-onboarding": "^9.0.15",
+		"@storybook/react-vite": "^9.0.15",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.3.0",
+		"@types/jest": "^30.0.0",
+		"@vitest/browser": "^3.0.8",
+		"@vitest/coverage-v8": "^3.0.8",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^30.0.4",
+		"jest-environment-jsdom": "^30.0.4",
+		"playwright": "^1.51.0",
+		"storybook": "^9.0.15",
+		"ts-jest": "^29.4.0",
+		"tsup": "^8.4.0",
+		"vitest": "^3.0.8",
+		"eslint-plugin-storybook": "9.0.15",
+		"@storybook/addon-vitest": "9.0.15",
+		"@storybook/addon-docs": "^9.0.15"
+	},
+	"dependencies": {
+		"@measured/puck": "^0.18.3",
+		"@types/katex": "^0.16.7",
+		"katex": "^0.16.22",
+		"markdown-it": "^14.1.0",
+		"markdown-it-katex": "^2.0.3",
+		"react-latex": "^2.0.0",
+		"reactjs-tiptap-editor": "^0.3.2",
+		"tiptap-math": "^1.0.0",
+		"uuid": "^11.1.0"
+	}
 }
