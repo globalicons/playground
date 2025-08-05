@@ -22,7 +22,7 @@ const config = {
 					setPreviewUrl(objectUrl)
 
 					// Get the upload URL with required body
-					const response = await fetch('https://y6jx3q6f5c.execute-api.eu-west-1.amazonaws.com/v2/core/util/generate-upload-url', {
+					const response = await fetch('https://api.eazyed.org/v1/core/util/generate-upload-url', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
